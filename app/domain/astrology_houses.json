@@ -1,0 +1,252 @@
+{
+  "vedic_astrology": {
+    "description": "In Vedic Astrology, the birth chart (horoscope) is divided into 12 houses, each representing a specific aspect of life. Every house has a ruling planet (planetary lord) that influences how that area behaves in an individual's chart.",
+    "houses": [
+      {
+        "house_number": 1,
+        "house_name": "First House",
+        "zodiac_sign": "Aries",
+        "ruling_planet": "Mars",
+        "alternate_names": ["Lagna", "Ascendant"],
+        "meaning": "Represents self, personality, physical appearance, confidence, and overall life approach.",
+        "influence": "A strong first house indicates vitality, leadership, and a proactive mindset.",
+        "recommended_gemstone": {
+          "name": "Red Coral",
+          "effects": "Enhances physical energy, courage, determination, and focus."
+        }
+      },
+      {
+        "house_number": 2,
+        "house_name": "Second House",
+        "zodiac_sign": "Taurus",
+        "ruling_planet": "Venus",
+        "meaning": "Governs wealth, family, possessions, and speech.",
+        "influence": "A strong Venus brings comfort, refined communication, and stability in family life.",
+        "recommended_gemstone": {
+          "name": "Diamond or Opal",
+          "effects": "Supports emotional balance, financial growth, and harmony in relationships."
+        }
+      },
+      {
+        "house_number": 3,
+        "house_name": "Third House",
+        "zodiac_sign": "Gemini",
+        "ruling_planet": "Mercury",
+        "meaning": "Represents courage, communication, siblings, and adaptability.",
+        "influence": "A well-placed Mercury enhances intellect, creativity, and quick thinking.",
+        "recommended_gemstone": {
+          "name": "Emerald (Panna)",
+          "effects": "Sharpens logic, improves concentration, and enhances verbal ability."
+        }
+      },
+      {
+        "house_number": 4,
+        "house_name": "Fourth House",
+        "zodiac_sign": "Cancer",
+        "ruling_planet": "Moon",
+        "meaning": "Relates to home, emotions, mother, and domestic happiness.",
+        "influence": "A strong Moon provides emotional stability, comfort, and strong maternal bonds.",
+        "recommended_gemstone": {
+          "name": "Pearl (Moti)",
+          "effects": "Calms emotions and promotes mental peace and family harmony."
+        }
+      },
+      {
+        "house_number": 5,
+        "house_name": "Fifth House",
+        "zodiac_sign": "Leo",
+        "ruling_planet": "Sun",
+        "meaning": "Represents creativity, intelligence, romance, and children.",
+        "influence": "A strong Sun brings leadership, confidence, and recognition.",
+        "recommended_gemstone": {
+          "name": "Ruby",
+          "effects": "Boosts self-esteem, leadership, and public success."
+        }
+      },
+      {
+        "house_number": 6,
+        "house_name": "Sixth House",
+        "zodiac_sign": "Virgo",
+        "ruling_planet": "Mercury",
+        "meaning": "Governs health, service, discipline, and handling obstacles.",
+        "influence": "A balanced Mercury aids problem-solving and stress management.",
+        "recommended_gemstone": {
+          "name": "Emerald (Panna)",
+          "effects": "Supports clarity, organization, and improved health."
+        }
+      },
+      {
+        "house_number": 7,
+        "house_name": "Seventh House",
+        "zodiac_sign": "Libra",
+        "ruling_planet": "Venus",
+        "meaning": "Represents partnerships, marriage, and long-term relationships.",
+        "influence": "A strong Venus enhances harmony and mutual respect in relationships.",
+        "recommended_gemstone": {
+          "name": "Opal or Diamond",
+          "effects": "Attracts positive relationships and strengthens emotional bonds."
+        }
+      },
+      {
+        "house_number": 8,
+        "house_name": "Eighth House",
+        "zodiac_sign": "Scorpio",
+        "ruling_planet": ["Mars", "Ketu"],
+        "meaning": "Rules transformation, longevity, hidden matters, and sudden events.",
+        "influence": "Brings depth, mystery, and resilience through transformation.",
+        "recommended_gemstone": {
+          "name": "Red Coral or Cat’s Eye",
+          "effects": "Provides protection, spiritual grounding, and emotional resilience."
+        },
+        "note": "Gemstones for this house should only be worn under expert supervision."
+      },
+      {
+        "house_number": 9,
+        "house_name": "Ninth House",
+        "zodiac_sign": "Sagittarius",
+        "ruling_planet": "Jupiter",
+        "meaning": "Represents luck, spirituality, higher learning, and long-distance travel.",
+        "influence": "A strong Jupiter brings wisdom, faith, and guidance from teachers or elders.",
+        "recommended_gemstone": {
+          "name": "Yellow Sapphire (Pukhraj)",
+          "effects": "Promotes wisdom, spiritual clarity, and success in education or career."
+        }
+      },
+      {
+        "house_number": 10,
+        "house_name": "Tenth House",
+        "zodiac_sign": "Capricorn",
+        "ruling_planet": "Saturn",
+        "meaning": "Governs career, reputation, authority, and public image.",
+        "influence": "A strong Saturn gives discipline, slow but steady growth, and respect.",
+        "recommended_gemstone": {
+          "name": "Blue Sapphire (Neelam)",
+          "effects": "Brings focus, patience, and professional stability."
+        }
+      },
+      {
+        "house_number": 11,
+        "house_name": "Eleventh House",
+        "zodiac_sign": "Aquarius",
+        "ruling_planet": "Saturn",
+        "meaning": "Represents gains, friendships, and fulfillment of desires.",
+        "influence": "A balanced Saturn ensures consistent progress and reliable support network.",
+        "recommended_gemstone": {
+          "name": "Blue Sapphire (Neelam)",
+          "effects": "Enhances steady financial growth and long-term achievements."
+        }
+      },
+      {
+        "house_number": 12,
+        "house_name": "Twelfth House",
+        "zodiac_sign": "Pisces",
+        "ruling_planet": ["Jupiter", "Ketu"],
+        "meaning": "Represents losses, isolation, spirituality, foreign travel, and liberation.",
+        "influence": "Brings spiritual awakening, detachment, and transcendence of material desires.",
+        "recommended_gemstone": {
+          "name": "Yellow Sapphire or Cat’s Eye",
+          "effects": "Enhances intuition, spiritual depth, and peaceful detachment."
+        }
+      }
+    ],
+    "planets": [
+      {
+        "name": "Sun",
+        "sanskrit_name": "Surya",
+        "description": "Stands for energy and the essence of a person's identity.",
+        "influence": "Represents life force, ego, and willpower.",
+        "gemstone": {
+          "name": "Ruby",
+          "color": "Deep Red",
+          "effects": "Enhances confidence, vitality, and leadership abilities."
+        }
+      },
+      {
+        "name": "Moon",
+        "sanskrit_name": "Chandra",
+        "description": "Reflects emotions, inner world, and mental stability.",
+        "influence": "Controls instincts and responses.",
+        "gemstone": {
+          "name": "Pearl (Moti)",
+          "color": "White or Cream",
+          "effects": "Balances emotions, calms the mind, and fosters inner peace."
+        }
+      },
+      {
+        "name": "Mars",
+        "sanskrit_name": "Mangal",
+        "description": "Provides strength, courage, and determination.",
+        "influence": "Drives ambition and competitiveness.",
+        "gemstone": {
+          "name": "Red Coral (Moonga)",
+          "color": "Red or Orange-Red",
+          "effects": "Increases energy, courage, and determination."
+        }
+      },
+      {
+        "name": "Mercury",
+        "sanskrit_name": "Budh",
+        "description": "Governs intellect, communication, and analytical thinking.",
+        "influence": "Affects reasoning and adaptability.",
+        "gemstone": {
+          "name": "Emerald (Panna)",
+          "color": "Green",
+          "effects": "Improves memory, speech clarity, and decision-making skills."
+        }
+      },
+      {
+        "name": "Venus",
+        "sanskrit_name": "Shukra",
+        "description": "Planet of beauty, love, luxury, and relationships.",
+        "influence": "Controls affection and creativity.",
+        "gemstone": {
+          "name": "Diamond or Opal",
+          "color": "White or Iridescent",
+          "effects": "Brings harmony and enhances love and luxury."
+        }
+      },
+      {
+        "name": "Jupiter",
+        "sanskrit_name": "Guru",
+        "description": "Planet of expansion, wisdom, and higher learning.",
+        "influence": "Represents luck and spirituality.",
+        "gemstone": {
+          "name": "Yellow Sapphire (Pukhraj)",
+          "color": "Yellow",
+          "effects": "Increases wisdom, prosperity, and spiritual insight."
+        }
+      },
+      {
+        "name": "Saturn",
+        "sanskrit_name": "Shani",
+        "description": "Planet of discipline, responsibility, and karma.",
+        "influence": "Teaches patience through challenges.",
+        "gemstone": {
+          "name": "Blue Sapphire (Neelam)",
+          "color": "Deep Blue",
+          "effects": "Brings stability, focus, and protection from obstacles."
+        }
+      },
+      {
+        "name": "Rahu",
+        "description": "Represents worldly desires, ambitions, and illusions.",
+        "influence": "Amplifies material pursuits and unconventional goals.",
+        "gemstone": {
+          "name": "Hessonite Garnet (Gomed)",
+          "color": "Honey Brown",
+          "effects": "Balances ambition, reduces confusion, and aids focus."
+        }
+      },
+      {
+        "name": "Ketu",
+        "description": "Represents spiritual liberation and detachment.",
+        "influence": "Encourages inner growth and enlightenment.",
+        "gemstone": {
+          "name": "Cat’s Eye (Lehsunia)",
+          "color": "Yellow-Green or Gray",
+          "effects": "Promotes spiritual insight and protection from negativity."
+        }
+      }
+    ]
+  }
+}

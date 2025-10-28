@@ -1,0 +1,88 @@
+{
+  "house_lords": [
+    {
+      "house_number": 1,
+      "house_name": "First House (Self / Body / Identity)",
+      "theme": "Personality, physical presence, confidence, how others see you.",
+      "natural_lord": "Mars",
+      "notes": "Represents self, vitality, willpower, approach to life."
+    },
+    {
+      "house_number": 2,
+      "house_name": "Second House (Wealth / Speech / Family)",
+      "theme": "Money, stored wealth, family values, food, voice.",
+      "natural_lord": "Venus",
+      "notes": "Reflects material security, how you speak, and early family conditioning."
+    },
+    {
+      "house_number": 3,
+      "house_name": "Third House (Courage / Communication / Initiative)",
+      "theme": "Self-expression, siblings, skills, personal marketing.",
+      "natural_lord": "Mercury",
+      "notes": "Shows confidence to act, write, speak, promote yourself."
+    },
+    {
+      "house_number": 4,
+      "house_name": "Fourth House (Home / Mother / Emotional Base)",
+      "theme": "Emotional safety, roots, property, inner peace.",
+      "natural_lord": "Moon",
+      "notes": "Heart center. Shows how safe and emotionally nourished you feel."
+    },
+    {
+      "house_number": 5,
+      "house_name": "Fifth House (Creativity / Romance / Recognition)",
+      "theme": "Love, self-expression, talent, children.",
+      "natural_lord": "Sun",
+      "notes": "Joy of life. Where you shine and want admiration."
+    },
+    {
+      "house_number": 6,
+      "house_name": "Sixth House (Service / Work / Health / Obstacles)",
+      "theme": "Daily grind, problem-solving, enemies, immunity, discipline.",
+      "natural_lord": "Mercury",
+      "notes": "How you handle stress, routine, conflict, and health management."
+    },
+    {
+      "house_number": 7,
+      "house_name": "Seventh House (Partnership / Marriage / Contracts)",
+      "theme": "Spouse, one-to-one bonds, business deals, public relations.",
+      "natural_lord": "Venus",
+      "notes": "How you join with equals. Marriage energy, client-facing energy."
+    },
+    {
+      "house_number": 8,
+      "house_name": "Eighth House (Transformation / Secrets / Shared Power)",
+      "theme": "Crisis, rebirth, fear, sexuality, inheritance, psychology.",
+      "natural_lord": "Mars/Ketu",
+      "notes": "The deep underworld of the chart. Trauma, healing, intensity."
+    },
+    {
+      "house_number": 9,
+      "house_name": "Ninth House (Belief / Dharma / Wisdom / Long Journeys)",
+      "theme": "Purpose, higher learning, mentors, father/guru, philosophy.",
+      "natural_lord": "Jupiter",
+      "notes": "Your compass. Morals, faith, worldview, alignment with meaning."
+    },
+    {
+      "house_number": 10,
+      "house_name": "Tenth House (Career / Public Image / Authority)",
+      "theme": "Reputation, achievement, social role, visibility, legacy.",
+      "natural_lord": "Saturn",
+      "notes": "Your contribution to society and how you're seen in the world."
+    },
+    {
+      "house_number": 11,
+      "house_name": "Eleventh House (Gains / Network / Expansion)",
+      "theme": "Wealth from career, friends, influence, scaling, big goals.",
+      "natural_lord": "Saturn",
+      "notes": "How you reach community scale and accumulate rewards."
+    },
+    {
+      "house_number": 12,
+      "house_name": "Twelfth House (Release / Isolation / Moksha / Abroad)",
+      "theme": "Letting go, subconscious, sleep, secrets, losses, spiritual surrender.",
+      "natural_lord": "Jupiter/Ketu",
+      "notes": "Deep private zone. Retreat, escape, exile, higher letting go."
+    }
+  ]
+}

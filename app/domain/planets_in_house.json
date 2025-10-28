@@ -1,0 +1,112 @@
+{
+  "planets_in_house": {
+    "house_number": 1,
+    "house_name": "First House (Lagna / Ascendant)",
+    "description": "The 1st House represents self, personality, and physical body.",
+    "planets": [
+      {
+        "planet": "Sun",
+        "positive_manifestations": [
+          "Strong personality and leadership presence.",
+          "High self-esteem and confidence.",
+          "Brings success, authority, and recognition.",
+          "Good vitality and health."
+        ],
+        "negative_manifestations": [
+          "Ego and arrogance if afflicted.",
+          "Domination causing relationship issues.",
+          "Conflicts with spouse or family.",
+          "Eye problems or low immunity."
+        ]
+      },
+      {
+        "planet": "Moon",
+        "positive_traits": [
+          "Nurturing, empathetic, and intuitive.",
+          "Emotional expressiveness with charm."
+        ],
+        "negative_traits": [
+          "Prone to mood swings and dependency.",
+          "Emotional instability when afflicted."
+        ]
+      },
+      {
+        "planet": "Mercury",
+        "positive_traits": [
+          "Smart, witty, and a good communicator.",
+          "Adaptable and youthful personality."
+        ],
+        "negative_traits": [
+          "Overthinking and restlessness.",
+          "Can offend others with blunt words."
+        ]
+      },
+      {
+        "planet": "Venus",
+        "positive_traits": [
+          "Charming, attractive, and diplomatic.",
+          "Love for arts, luxury, and beauty."
+        ],
+        "negative_traits": [
+          "Materialistic or indulgent nature.",
+          "Risk of vanity or infidelity."
+        ]
+      },
+      {
+        "planet": "Mars",
+        "positive_traits": [
+          "Courageous and energetic leader.",
+          "Strong determination and discipline."
+        ],
+        "negative_traits": [
+          "Aggressive and impulsive behavior.",
+          "Can cause Manglik Dosha affecting marriage."
+        ]
+      },
+      {
+        "planet": "Jupiter",
+        "positive_traits": [
+          "Wise, optimistic, and spiritual.",
+          "Brings fortune and good health."
+        ],
+        "negative_traits": [
+          "Overconfidence and impractical optimism.",
+          "Tendency to gain weight."
+        ]
+      },
+      {
+        "planet": "Saturn",
+        "positive_traits": [
+          "Disciplined, responsible, and hardworking.",
+          "Learns patience and achieves long-term success."
+        ],
+        "negative_traits": [
+          "Delays and struggles in early life.",
+          "Low self-esteem or pessimism."
+        ]
+      },
+      {
+        "planet": "Rahu (North Node)",
+        "positive_traits": [
+          "Charismatic, ambitious, and strategic.",
+          "Can achieve fame through unconventional methods."
+        ],
+        "negative_traits": [
+          "Confusion about self-identity.",
+          "Restlessness and desire for worldly success."
+        ]
+      },
+      {
+        "planet": "Ketu (South Node)",
+        "positive_traits": [
+          "Intuitive, spiritual, and detached.",
+          "Possesses deep inner wisdom."
+        ],
+        "negative_traits": [
+          "Struggles with identity or detachment.",
+          "Low self-esteem or emotional distance."
+        ]
+      }
+    ]
+  }
+}

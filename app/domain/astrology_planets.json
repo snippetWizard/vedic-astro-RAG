@@ -1,0 +1,13 @@
+{
+  "planets": [
+    { "name": "Sun", "sanskrit_name": "Surya", "description": "Essence of self and vitality.", "gemstone": "Ruby" },
+    { "name": "Moon", "sanskrit_name": "Chandra", "description": "Mind and emotions.", "gemstone": "Pearl" },
+    { "name": "Mars", "sanskrit_name": "Mangal", "description": "Courage and strength.", "gemstone": "Red Coral" },
+    { "name": "Mercury", "sanskrit_name": "Budh", "description": "Intellect and communication.", "gemstone": "Emerald" },
+    { "name": "Venus", "sanskrit_name": "Shukra", "description": "Love and beauty.", "gemstone": "Diamond" },
+    { "name": "Jupiter", "sanskrit_name": "Guru", "description": "Wisdom and prosperity.", "gemstone": "Yellow Sapphire" },
+    { "name": "Saturn", "sanskrit_name": "Shani", "description": "Discipline and karma.", "gemstone": "Blue Sapphire" },
+    { "name": "Rahu", "description": "Worldly desires and illusions.", "gemstone": "Hessonite" },
+    { "name": "Ketu", "description": "Spiritual liberation and detachment.", "gemstone": "Cat’s Eye" }
+  ]
+}
