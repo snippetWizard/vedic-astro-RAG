@@ -127,3 +127,61 @@ Docker usage
   - One-shot ingestion: `docker compose run --rm ingest`
     - This runs `python -m app.ingest` inside the container and exits.
     - The `chroma_storage` volume is persisted at `./chroma_storage` on the host.
+
+---
+
+Publish images
+- Docker Hub (manual):
+  - `docker login`
+  - `docker build -t <dockerhub-username>/astrology-rag:latest .`
+  - `docker push <dockerhub-username>/astrology-rag:latest`
+- GitHub Container Registry (manual):
+  - Create a classic Personal Access Token with `write:packages` scope or use `gh auth login`.
+  - `echo $CR_PAT | docker login ghcr.io -u <github-username> --password-stdin`
+  - `docker tag astrology-rag:latest ghcr.io/<owner>/<repo>:latest`
+  - `docker push ghcr.io/<owner>/<repo>:latest`
+- GitHub Actions (automated):
+  - Workflow file: `.github/workflows/docker-publish.yml` builds on pushes to `main` and tags like `v*`.
+  - It publishes to GHCR as `ghcr.io/<owner>/<repo>:<tag>` and `:latest` on the default branch.
+  - Optional: add `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repo secrets to also push to Docker Hub (see commented line in the workflow).
+
+---
+
+Local test and Docker Hub publish
+- Build local image:
+  - `docker build -t astrology-rag:latest .`
+- Create a persistent volume for Chroma (recommended on Windows):
+  - `docker volume create rag_chroma`
+- Ingest knowledge base (one-shot):
+  - `docker run --rm --env-file .env -v rag_chroma:/app/chroma_storage astrology-rag:latest python -m app.ingest`
+- Run the API:
+  - `docker run --rm -d --name rag_api -p 8000:8000 --env-file .env -v rag_chroma:/app/chroma_storage astrology-rag:latest`
+- Test endpoints:
+  - Health: `curl http://localhost:8000/`
+  - Chat (PowerShell):
+    - `$body = @{ query = "What does Sun in the 1st house mean?" } | ConvertTo-Json`
+    - `Invoke-RestMethod -Method Post -Uri http://localhost:8000/chat/rag -ContentType 'application/json' -Body $body`
+- Stop API:
+  - `docker stop rag_api`
+
+Publish to Docker Hub (manual)
+- Login:
+  - `docker login`
+- Tag and push latest:
+  - `docker tag astrology-rag:latest <dockerhub-username>/astrology-rag:latest`
+  - `docker push <dockerhub-username>/astrology-rag:latest`
+- Optional version tag:
+  - PowerShell: `$VERSION = "v0.1.0"`
+  - `docker tag astrology-rag:latest <dockerhub-username>/astrology-rag:$VERSION`
+  - `docker push <dockerhub-username>/astrology-rag:$VERSION`
+
+Automated publish via GitHub Actions
+- Workflow: `.github/workflows/docker-publish.yml` builds on pushes to `main/master` and tags `v*`.
+- Pushes to:
+  - GHCR: `ghcr.io/<owner>/<repo>:<tag>` and `:latest` on default branch.
+  - Docker Hub: `docker.io/<DOCKERHUB_USERNAME>/astrology-rag:<tag>` (requires repo secrets).
+- Required repo secrets for Docker Hub:
+  - `DOCKERHUB_USERNAME`: your Docker Hub username.
+  - `DOCKERHUB_TOKEN`: a Docker Hub Access Token (create under Docker Hub → Account Settings → Security → New Access Token).
+- Multi-arch (optional): edit workflow `platforms` to `linux/amd64,linux/arm64`.
+- CI tests: On push/PR to `main/master`, `pytest` runs first. Image publish only occurs if tests pass and the event is a push (not a PR).

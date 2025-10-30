@@ -18,7 +18,7 @@ async def run_rag(query: str) -> (str, List[RetrievedChunk]):
     """
     1. Retrieve top_k matches from Chroma.
     2. Build context (truncate to max_context_chars).
-    3. Call GPT-5 Thinking.
+    3. Call GPT-5.
     4. Return final answer + preview chunks.
     """
 

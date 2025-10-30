@@ -15,7 +15,7 @@ class VectorStore:
     - Insert (upsert) text chunks with embeddings
     - Perform similarity search
     """
-
+ 
     def __init__(self):
         # Create / open persistent ChromaDB client
         self.client = chromadb.PersistentClient(
