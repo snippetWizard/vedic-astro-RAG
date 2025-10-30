@@ -8,8 +8,8 @@ load_dotenv()
 class Settings(BaseModel):
     openai_api_key: str = Field(..., validation_alias="OPENAI_API_KEY")
     openai_chat_model: str = Field(
-        default="gpt-5-thinking",
-        description="High reasoning model for final answer"
+        default="gpt-4o-mini",
+        description="OpenAI chat model ID for final answer"
     )
     openai_embedding_model: str = Field(
         default="text-embedding-3-large",
@@ -33,6 +33,9 @@ class Settings(BaseModel):
 def get_settings() -> Settings:
     return Settings(
         OPENAI_API_KEY=os.getenv("OPENAI_API_KEY"),
+        # Allow overriding models via env vars if provided
+        openai_chat_model=os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini"),
+        openai_embedding_model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large"),
         chroma_persist_dir=os.getenv("CHROMA_PERSIST_DIR", "./chroma_storage"),
         chroma_collection=os.getenv("CHROMA_COLLECTION", "astrology_knowledge"),
     )

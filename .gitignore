@@ -1,2 +1,7 @@
 .venv
 .env
+/chroma_storage
+chroma_storage
+__pycache__
+.pytest_cache
+.test_chroma_storage

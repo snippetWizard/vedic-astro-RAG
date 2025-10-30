@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from .router_chat import router as chat_router  # RAG Q&A route
-from .router_chart import router as chart_router  # NEW personalized chart route
+# from .router_chart import router as chart_router  # NEW personalized chart route
 
 app = FastAPI(
     title="Vedic Astrology RAG API",
@@ -10,8 +10,9 @@ app = FastAPI(
 )
 
 app.include_router(chat_router)
-app.include_router(chart_router)
+# app.include_router(chart_router)
 
 @app.get("/", tags=["health"])
 async def root():
     return JSONResponse({"status": "ok", "service": "vedic-rag"})
+

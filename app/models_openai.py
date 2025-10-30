@@ -1,27 +1,25 @@
+import os
 import httpx
 from typing import List
 from .config import settings
 
-# NOTE:
-# We're doing manual HTTP calls so you can swap OpenAI provider later (Azure, custom proxy, etc.)
-# This layer is the ONLY place in the repo that knows about OpenAI’s actual endpoints.
-
-
-OPENAI_CHAT_URL = "https://api.openai.com/v1/chat/completions"
-OPENAI_EMBED_URL = "https://api.openai.com/v1/embeddings"
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")  # we can override this in .env if you're on Azure or a proxy
+# Guard against missing "/v1" when pointing to api.openai.com
+if "api.openai.com" in OPENAI_BASE_URL and not OPENAI_BASE_URL.rstrip("/").endswith("/v1"):
+    OPENAI_BASE_URL = OPENAI_BASE_URL.rstrip("/") + "/v1"
+CHAT_ENDPOINT = f"{OPENAI_BASE_URL}/chat/completions"
+EMBED_ENDPOINT = f"{OPENAI_BASE_URL}/embeddings"
 
 
 async def generate_embedding(text: str) -> List[float]:
     """
     Create an embedding vector for a given text using OpenAI embeddings.
-    We'll store these vectors in Qdrant.
-
-    text: any text chunk (house description, planet meaning, etc.)
-    returns: list[float] - embedding vector
+    If you're on Azure OpenAI, set OPENAI_BASE_URL in .env to your Azure endpoint, e.g.:
+    https://my-resource.openai.azure.com/openai/deployments/my-embedding-model
     """
     async with httpx.AsyncClient(timeout=30.0) as client:
         resp = await client.post(
-            OPENAI_EMBED_URL,
+            EMBED_ENDPOINT,
             headers={
                 "Authorization": f"Bearer {settings.openai_api_key}",
                 "Content-Type": "application/json",
@@ -31,57 +29,88 @@ async def generate_embedding(text: str) -> List[float]:
                 "input": text
             }
         )
-    resp.raise_for_status()
+
+    # raise clearer error
+    try:
+        resp.raise_for_status()
+    except httpx.HTTPStatusError as e:
+        raise RuntimeError(
+            f"OpenAI embedding call failed ({e.response.status_code}): {e.response.text}"
+        )
+
     data = resp.json()
     return data["data"][0]["embedding"]
 
 
 async def generate_answer(system_prompt: str, user_question: str, context: str) -> str:
     """
-    Call the LLM (GPT-5 Thinking) with retrieved context and user query.
-
-    We give the model:
-    - system message (how to behave)
-    - context block (retrieved knowledge from vector DB)
-    - final user question
-
-    We DO NOT let the model hallucinate astrology predictions outside provided context.
-    We'll instruct it to cite which section of context it used logically,
-    BUT we won't expose file paths to the end user.
+    Generate an answer from GPT-5 Thinking (or your chosen chat model)
+    using the standard /v1/chat/completions route.
     """
     messages = [
-        {
-            "role": "system",
-            "content": system_prompt
-        },
+        {"role": "system", "content": system_prompt},
         {
             "role": "user",
             "content": (
                 "You are an expert Vedic Astrology assistant.\n"
-                "You must answer ONLY using the provided 'CONTEXT' below.\n"
-                "If the user asks for personal predictions (like marriage date, health forecast, etc.), "
-                "political opinion, medical treatment, or anything not covered in CONTEXT, "
-                "politely say you cannot answer.\n\n"
+                "Answer ONLY using the CONTEXT below. If context is insufficient, say so.\n\n"
                 f"CONTEXT:\n{context}\n\n"
                 f"USER QUESTION:\n{user_question}"
-            )
-        }
+            ),
+        },
     ]
 
     async with httpx.AsyncClient(timeout=60.0) as client:
         resp = await client.post(
-            OPENAI_CHAT_URL,
+            CHAT_ENDPOINT,
             headers={
                 "Authorization": f"Bearer {settings.openai_api_key}",
                 "Content-Type": "application/json",
             },
             json={
                 "model": settings.openai_chat_model,
-                "temperature": 0.4,  # calm, factual
+                "messages": messages,
+                "temperature": 0.4,
                 "max_tokens": 600,
-                "messages": messages
-            }
+            },
         )
-    resp.raise_for_status()
+
+    # If OpenAI returns 404, it can be either wrong endpoint OR model not found.
+    if resp.status_code == 404:
+        detail = None
+        err_json = None
+        try:
+            err_json = resp.json()
+        except Exception:
+            err_json = None
+
+        if isinstance(err_json, dict) and "error" in err_json:
+            err = err_json.get("error") or {}
+            code = (err.get("code") or "").lower()
+            message = (err.get("message") or "")
+            # Common OpenAI response when the model is invalid
+            if code == "model_not_found" or "does not exist" in message.lower() or (
+                "model" in message.lower() and "not found" in message.lower()
+            ):
+                raise RuntimeError(
+                    f"OpenAI model not found: '{settings.openai_chat_model}'. "
+                    "Set OPENAI_CHAT_MODEL to a valid Chat Completions model, e.g. 'gpt-4o-mini' or 'gpt-4o'."
+                )
+            detail = message or str(err_json)
+
+        raise RuntimeError(
+            "OpenAI returned 404 for /chat/completions. "
+            "Possible causes: (1) wrong OPENAI_BASE_URL, (2) using Azure OpenAI without correct path, "
+            "(3) corporate proxy rewriting the URL, (4) typo in endpoint. "
+            f"Current endpoint: {CHAT_ENDPOINT}" + (f" | Detail: {detail}" if detail else "")
+        )
+
+    try:
+        resp.raise_for_status()
+    except httpx.HTTPStatusError as e:
+        raise RuntimeError(
+            f"OpenAI chat call failed ({e.response.status_code}): {e.response.text}"
+        )
+
     data = resp.json()
     return data["choices"][0]["message"]["content"].strip()
